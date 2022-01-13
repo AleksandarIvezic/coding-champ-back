@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  category: one
+  difficulty: MyString
+  text: MyText
+  answer_1: MyText
+  answer_2: MyText
+  answer_3: MyText
+  answer_4: MyText
+  correct: MyString
+
+two:
+  category: two
+  difficulty: MyString
+  text: MyText
+  answer_1: MyText
+  answer_2: MyText
+  answer_3: MyText
+  answer_4: MyText
+  correct: MyString
