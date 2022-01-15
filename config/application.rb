@@ -8,6 +8,9 @@ Bundler.require(*Rails.groups)
 
 module CodingChampBack
   class Application < Rails::Application
+    #API only application
+    config.api_only = true
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
 
