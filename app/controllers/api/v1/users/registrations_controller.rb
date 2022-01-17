@@ -9,8 +9,8 @@ class Api::V1::Users::RegistrationsController < ApplicationController
       sign_in(@user)
       render json: { message: 'User successfully registered!',
                      token: JsonWebToken.encode(sub: @user.id),
-                     id: current_api_v1_user.id,
-                     username: current_api_v1_user.username,
+                     name: current_api_v1_user.name,
+                     image: current_api_v1_user.image,
                      admin: current_api_v1_user.admin }
     else
       render json: { errors: ['Registration failed!', @user.errors] }
@@ -20,6 +20,6 @@ class Api::V1::Users::RegistrationsController < ApplicationController
   # private
 
   def user_params
-    params.permit(:username, :email, :password, :password_confirmation, :admin)
+    params.permit(:name, :email, :password, :password_confirmation, :image, :admin)
   end
 end

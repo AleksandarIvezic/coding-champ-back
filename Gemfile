@@ -54,10 +54,10 @@ gem 'bootsnap', require: false
 # Add Rubocop gem
 gem 'rubocop', '>= 1.0', '< 2.0'
 
-# Add devise and devise-token_authenticable gems for authentication 
+# Add devise and devise-token_authenticable gems for authentication
 gem 'devise'
-
-
+gem 'jwt', '~> 2.3'
+gem 'rack-cors'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

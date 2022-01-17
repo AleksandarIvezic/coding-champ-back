@@ -111,6 +111,7 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
+    jwt (2.3.0)
     loofah (2.13.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -152,6 +153,8 @@ GEM
       nio4r (~> 2.0)
     racc (1.6.0)
     rack (2.2.3)
+    rack-cors (1.1.1)
+      rack (>= 2.0.0)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (7.0.1)
@@ -252,8 +255,10 @@ DEPENDENCIES
   devise
   importmap-rails
   jbuilder
+  jwt (~> 2.3)
   pg
   puma (~> 5.0)
+  rack-cors
   rails (~> 7.0.0)
   rubocop (>= 1.0, < 2.0)
   selenium-webdriver
