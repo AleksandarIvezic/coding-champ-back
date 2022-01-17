@@ -10,57 +10,57 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_17_190741) do
+ActiveRecord::Schema.define(version: 2022_01_17_203742) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "categories", force: :cascade do |t|
-    t.string "name"
-    t.string "icon"
+    t.text "name"
+    t.text "icon"
     t.text "info"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.timestamptz "created_at"
+    t.timestamptz "updated_at"
   end
 
   create_table "questions", force: :cascade do |t|
-    t.integer "category_id", null: false
-    t.string "difficulty"
+    t.bigint "category_id"
+    t.text "difficulty"
     t.text "text"
     t.text "answer_1"
     t.text "answer_2"
     t.text "answer_3"
     t.text "answer_4"
-    t.string "correct"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["category_id"], name: "index_questions_on_category_id"
+    t.text "correct"
+    t.timestamptz "created_at"
+    t.timestamptz "updated_at"
+    t.index ["category_id"], name: "idx_16791_index_questions_on_category_id"
   end
 
   create_table "scores", force: :cascade do |t|
-    t.integer "top_score"
-    t.integer "user_id", null: false
-    t.integer "category_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_scores_on_user_id"
+    t.bigint "top_score"
+    t.bigint "user_id"
+    t.bigint "category_id"
+    t.timestamptz "created_at"
+    t.timestamptz "updated_at"
+    t.index ["user_id"], name: "idx_16776_index_scores_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "email", default: "", null: false
-    t.string "image"
+    t.text "name"
+    t.text "email", default: "", null: false
+    t.text "image"
     t.boolean "admin"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.text "authentication_token"
-    t.datetime "authentication_token_created_at", precision: 6
+    t.timestamptz "created_at"
+    t.timestamptz "updated_at"
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at", precision: 6
     t.datetime "remember_created_at", precision: 6
-    t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "questions", "categories"
-  add_foreign_key "scores", "users"
+  add_foreign_key "questions", "categories", name: "questions_category_id_fkey"
+  add_foreign_key "scores", "users", name: "scores_user_id_fkey"
 end

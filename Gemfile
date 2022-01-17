@@ -10,7 +10,10 @@ gem 'rails', '~> 7.0.0'
 gem 'sprockets-rails'
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3', '~> 1.4'
+# gem 'sqlite3', '~> 1.4'
+
+# Use postgres database
+gem 'pg'
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem 'puma', '~> 5.0'
@@ -53,7 +56,8 @@ gem 'rubocop', '>= 1.0', '< 2.0'
 
 # Add devise and devise-token_authenticable gems for authentication 
 gem 'devise'
-gem 'devise-token_authenticatable'
+
+
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

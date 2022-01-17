@@ -14,7 +14,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = 'f839c24280d122ea4260236928048fda6aa740b162027e16d5645926497aeb207bf215f22b91cd509d31f37ebfe4afde3b114dbf16e4d86fe9358030180be583'
+  # config.secret_key = '8b3a360ef38b23f64d58f00282dc00abd81f2d4a750760b1c5eb99cbc4c9cedbf8b96c95862e10e9dc8e6279fa95f2f22679f8c2a2bb4cd14b90b641dce00f3b'
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
@@ -81,9 +81,6 @@ Devise.setup do |config|
   # :database      = Support basic authentication with authentication key + password
   # config.http_authenticatable = false
 
-  # Enable devise's HTTP Auth for the token strategy
-  config.http_authenticatable = true
-
   # If 401 status code should be returned for AJAX requests. True by default.
   # config.http_authenticatable_on_xhr = true
 
@@ -100,7 +97,7 @@ Devise.setup do |config|
   # Notice that if you are skipping storage for all authentication paths, you
   # may want to disable generating routes to Devise's sessions controller by
   # passing skip: :sessions to `devise_for` in your config/routes.rb
-  config.skip_session_storage = [:http_auth, :token_auth]
+  config.skip_session_storage = [:http_auth]
 
   # By default, Devise cleans up the CSRF token on authentication to
   # avoid CSRF token fixation attacks. This means that, when using AJAX
@@ -129,7 +126,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 12
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = '0b0fc3333e0386cd27d6ef5b1e52ca83ebe711d3bde8d55a3806e6d1b085ab51329ebe700eb3a02368a4c139c360cec571ef8508172d3c65403c9f0709b4efa8'
+  # config.pepper = '2c491f07d8800d5372649feb5bd0eba76d30fc824708fe19dda83dd44eeb517c97f7411406c27b531cd26613d4321cfaa432e79d9a15be83e5eb8ed344a9414d'
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false
@@ -311,24 +308,4 @@ Devise.setup do |config|
   # When set to false, does not sign a user in automatically after their password is
   # changed. Defaults to true, so a user is signed in automatically after changing a password.
   # config.sign_in_after_change_password = true
-end
-
-# Set up token_authenticatable gem
-Devise::TokenAuthenticatable.setup do |config|
-  # enables the expiration of a token after a specified amount of time,
-  # requires an additional field on the model: `authentication_token_created_at`
-  # defaults to nil
-  config.token_expires_in = 1.day
-
-  # set the authentication key name used by this module,
-  # defaults to :auth_token
-  config.token_authentication_key = :other_key_name
-
-  # enable reset of the authentication token before the model is saved,
-  # defaults to false
-  config.should_reset_authentication_token = true
-
-  # enables the setting of the authentication token - if not already - before the model is saved,
-  # defaults to false
-  config.should_ensure_authentication_token = true
 end
