@@ -1,4 +1,4 @@
-class Api::V1::Users::RegistrationsController < ApplicationController
+class Api::V1::Users::RegistrationsController < ApiController
   skip_before_action :authenticate_api_v1_user!, only: [:create]
 
   # POST /resource
