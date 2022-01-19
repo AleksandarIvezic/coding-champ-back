@@ -6,12 +6,12 @@ class Api::V1::Users::RegistrationsController < ApiController
     @user = User.new(user_params)
     @user.admin = false unless @user.admin
     if @user.save
-      sign_in(@user)
+      # sign_in(@user)
       render json: { message: 'User successfully registered!',
                      token: JsonWebToken.encode(sub: @user.id),
-                     name: current_api_v1_user.name,
-                     image: current_api_v1_user.image,
-                     admin: current_api_v1_user.admin }
+                     name: @user.name,
+                     image: @user.image,
+                     admin: @user.admin }
     else
       render json: { errors: ['Registration failed!', @user.errors] }
     end
